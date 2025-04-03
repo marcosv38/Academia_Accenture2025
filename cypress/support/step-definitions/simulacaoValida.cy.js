@@ -1,6 +1,7 @@
 import {Given, When, And, Then, Before, After, But} from 'cypress-cucumber-preprocessor/steps'
 import Home from '../pages/Home'
 import VehiceData from '../pages/Enter Vehicle Data'
+import InsuranceData from '../pages/Enter Insurance Data'
 
 Given('que estou na página inicial do site',()=>{
     Home.visitarPagina()
@@ -15,5 +16,5 @@ When('insiro os dados do veiculo {string}',(veiculo)=>{
 })
 
 And('informo os dados do seguro', ()=>{
-    
+    InsuranceData.inserirDadosInsurance()
 })
