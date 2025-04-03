@@ -1,0 +1,19 @@
+{
+  "name": "academia_accenture2024",
+  "version": "1.0.0",
+  "description": "Desafio final da trilha de Cypress na Academia Accenture 2025.",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step-definitions/"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcos Paulo Jerônimo dos Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.2.1",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  }
+}
