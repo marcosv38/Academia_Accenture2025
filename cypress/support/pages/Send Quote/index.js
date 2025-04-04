@@ -1,5 +1,8 @@
 import { elements as el} from "./elements";
-import faker from 'faker-br';
+import { faker } from '@faker-js/faker';
+
+
+
 class SendQuote{
 
     sendQuote(){
@@ -12,7 +15,7 @@ class SendQuote{
         cy.get(el.INPUT_SEND_EMAIL).click();
     }
 
-    validarEnvioProposta(){
+    validateSendProposal(){
         cy.get(el.MODAL_SEND_QUOTE, { timeout: 15000 }).should('be.visible');
         cy.get(el.MODAL_SEND_QUOTE).contains('Sending e-mail success!');
         cy.get(el.BTN_CONFIRM_QUOTE).click();

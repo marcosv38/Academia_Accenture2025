@@ -7,7 +7,7 @@ Funcionalidade: Simulação de oferta de seguro de veículo
         E escolho o tipo de automóvel 'automobile'
         Quando insiro os dados do veiculo 'automobile'
         E informo os dados do seguro
-        E informo os dados do produto
+        E informo os dados do produto 'automobile'
         Então escolho o preço do produto
         E valido o pdf
         E envio a proposta

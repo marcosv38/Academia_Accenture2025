@@ -10,6 +10,12 @@ class QuoteAnalysis{
         cy.get(el.INPUT_NEXT).click();
     }
     
+    analysisPDF(){
+        cy.task('readPdf', 'cypress/downloads/Tricentis_Insurance_Quote.pdf')
+            .should('contain', 'Occupation')
+            .and('contain', 'Agreement')
+    }
+    
 }
 
 export default new QuoteAnalysis();

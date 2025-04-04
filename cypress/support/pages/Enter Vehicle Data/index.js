@@ -1,23 +1,16 @@
 import { elements as el} from "./elements";
-import faker from 'faker-br';
+import { faker } from '@faker-js/faker';
+import moment from 'moment';
 
-const dataPassada = faker.date.past(10);
-const mes = String(dataPassada.getMonth() + 1).padStart(2, '0'); // Ajusta para 2 dígitos
-const dia = String(dataPassada.getDate()).padStart(2, '0'); // Ajusta para 2 dígitos
-const ano = dataPassada.getFullYear(); 
+const fakeDate = moment(faker.date.past(10)).format('MM/DD/YYYY');
+
 
 class VehiceData{
 
-    
-
-    visitarVehiceData(){
-        cy.visit('/')
-    }
-
-    inserirDadosVeiculo(veiculo){
+    fillVehicleData(vehice){
         cy.get(el.SELECT_MAKE).select(Math.trunc(Math.random()*14)+1);
         cy.get(el.INPUT_PERFORMANCE).type(Math.trunc(Math.random()*1999)+1)
-        cy.get(el.INPUT_MANUFACTURE).type(`${mes}/${dia}/${ano}`)
+        cy.get(el.INPUT_MANUFACTURE).type(fakeDate)
         cy.get(el.SELECT_NUMBERSEATS).select(Math.trunc(Math.random()*9)+1)
         cy.get(el.SELECT_FUEL).select(Math.trunc(Math.random()*5)+1)
         cy.get(el.INPUT_PRICE).type(Math.trunc(Math.random()*(100000 - 500)+500))

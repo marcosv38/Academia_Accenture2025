@@ -1,11 +1,8 @@
 const { defineConfig } = require("cypress");
-
+const { readPdf } = require('./cypress/support/helper')
 module.exports = defineConfig({
   env: {
-    emailQuote: 'teste@gmail.com',
-    passwordQuote: 'Oco@8859',
-    phoneQuote: '81999999999',
-    userNameQuote: 'Analista_QA_Jr',
+    
   },
   e2e: {
     viewportWidth: 1280,
@@ -15,6 +12,9 @@ module.exports = defineConfig({
     baseUrl: 'https://sampleapp.tricentis.com/101/',
 
     setupNodeEvents(on, config) {
+      on('task', {
+        readPdf
+      })
       const cucumber = require('cypress-cucumber-preprocessor').default;
       on('file:preprocessor', cucumber());
     },

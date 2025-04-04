@@ -7,5 +7,6 @@ export const elements = {
     INPUT_PRICE: '#listprice',
     INPUT_PLATE: '#licenseplatenumber',
     INPUT_MILEAGE: '#annualmileage',
-    BUTTON_NEXT: '#nextenterinsurantdata'
+    BUTTON_NEXT: '#nextenterinsurantdata',
+    LABEL_VEHICE_TYPE: '#selectedinsurance'
 }

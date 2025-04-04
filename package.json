@@ -17,6 +17,9 @@
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "dependencies": {
-    "faker-br": "^0.4.1"
+    "@faker-js/faker": "^9.6.0",
+    "faker-br": "^0.4.1",
+    "moment": "^2.30.1",
+    "pdf-parse": "^1.1.1"
   }
 }

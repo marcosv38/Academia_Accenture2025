@@ -7,32 +7,34 @@ import PriceOption from '../pages/Enter Price Option'
 import SendQuote from '../pages/Send Quote'
 import QuoteAnalysis from '../pages/Analise PDF'
 
+
 Given('que estou na página inicial do site',()=>{
-    Home.visitarPagina()
+    Home.visitPage()
 })
 
-And('escolho o tipo de automóvel {string}', (veiculo)=>{
-    Home.selecionarVeiculo(veiculo)
+And('escolho o tipo de automóvel {string}', (vehice)=>{
+    Home.selectVehicle(vehice)
 })
 
-When('insiro os dados do veiculo {string}',(veiculo)=>{
-    VehiceData.inserirDadosVeiculo(veiculo)
+When('insiro os dados do veiculo {string}',(vehice)=>{
+    VehiceData.fillVehicleData(vehice)
 })
 
 And('informo os dados do seguro', ()=>{
-    InsuranceData.inserirDadosInsurance()
+    InsuranceData.fillDataInsurance()
 })
 
-And('informo os dados do produto', ()=>{
-    ProductData.inserirDadosProduct()
+And('informo os dados do produto {string}', ()=>{
+    ProductData.fillDataProduct()
 })
 
 Then('escolho o preço do produto',()=>{
-    PriceOption.escolherPrice()
+    PriceOption.choosePrice()
 })
 
 And('valido o pdf',()=>{
     QuoteAnalysis.downloadQuote()
+    QuoteAnalysis.analysisPDF()
 })
 
 And('envio a proposta',()=>{
@@ -41,5 +43,5 @@ And('envio a proposta',()=>{
 
 
 And('valido o envio da proposta',()=>{
-    SendQuote.validarEnvioProposta()
+    SendQuote.validateSendProposal()
 })

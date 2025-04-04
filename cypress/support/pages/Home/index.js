@@ -2,11 +2,11 @@ import { elements as el} from "./elements";
 
 class Home{
     
-    visitarPagina(){
+    visitPage(){
         cy.visit('/')
     }
 
-    selecionarVeiculo(veiculo){
+    selectVehicle(veiculo){
         cy.get(el.BTN_VEHICLE_TYPE+veiculo).click();
     }
 }
