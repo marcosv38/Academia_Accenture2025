@@ -2,8 +2,10 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   env: {
-    emailQuote: '',
-    passwordQuote: '',
+    emailQuote: 'teste@gmail.com',
+    passwordQuote: 'Oco@8859',
+    phoneQuote: '81999999999',
+    userNameQuote: 'Analista_QA_Jr',
   },
   e2e: {
     viewportWidth: 1280,

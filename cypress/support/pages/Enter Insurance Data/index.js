@@ -17,7 +17,7 @@ class InsuranceData{
         cy.get(el.RADIO_GENDER).click();
         cy.get(el.INPUT_STREET_ADRESS).type(faker.address.streetName());
         cy.get(el.SELECT_COUNTRY).select(Math.trunc(Math.random()*30)+1);
-        cy.get(el.INPUT_ZIPCODE).type(faker.address.zipCode());
+        cy.get(el.INPUT_ZIPCODE).type(faker.address.zipCode().replace('-', ''));
         cy.get(el.INPUT_CITY).type(faker.address.city());
         cy.get(el.SELECT_OCCUPATION).select(Math.trunc(Math.random()*5)+1);
         cy.get(el.CHECKBOX_HOBBIES).click();

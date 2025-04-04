@@ -2,6 +2,9 @@ import {Given, When, And, Then, Before, After, But} from 'cypress-cucumber-prepr
 import Home from '../pages/Home'
 import VehiceData from '../pages/Enter Vehicle Data'
 import InsuranceData from '../pages/Enter Insurance Data'
+import ProductData from '../pages/Enter Product Data'
+import PriceOption from '../pages/Enter Price Option'
+import SendQuote from '../pages/Send Quote'
 
 Given('que estou na página inicial do site',()=>{
     Home.visitarPagina()
@@ -17,4 +20,21 @@ When('insiro os dados do veiculo {string}',(veiculo)=>{
 
 And('informo os dados do seguro', ()=>{
     InsuranceData.inserirDadosInsurance()
+})
+
+And('informo os dados do produto', ()=>{
+    ProductData.inserirDadosProduct()
+})
+
+Then('escolho o preço do produto',()=>{
+    PriceOption.escolherPrice()
+})
+
+And('envio a proposta',()=>{
+    SendQuote.sendQuote()
+})
+
+
+And('valido o envio da proposta',()=>{
+    SendQuote.validarEnvioProposta()
 })
