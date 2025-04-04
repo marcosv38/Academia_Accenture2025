@@ -9,5 +9,6 @@ Funcionalidade: Simulação de oferta de seguro de veículo
         E informo os dados do seguro
         E informo os dados do produto
         Então escolho o preço do produto
+        E valido o pdf
         E envio a proposta
         E valido o envio da proposta

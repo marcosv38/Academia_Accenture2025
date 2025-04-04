@@ -5,6 +5,7 @@ import InsuranceData from '../pages/Enter Insurance Data'
 import ProductData from '../pages/Enter Product Data'
 import PriceOption from '../pages/Enter Price Option'
 import SendQuote from '../pages/Send Quote'
+import QuoteAnalysis from '../pages/Analise PDF'
 
 Given('que estou na página inicial do site',()=>{
     Home.visitarPagina()
@@ -28,6 +29,10 @@ And('informo os dados do produto', ()=>{
 
 Then('escolho o preço do produto',()=>{
     PriceOption.escolherPrice()
+})
+
+And('valido o pdf',()=>{
+    QuoteAnalysis.downloadQuote()
 })
 
 And('envio a proposta',()=>{
