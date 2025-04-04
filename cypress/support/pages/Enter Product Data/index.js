@@ -2,11 +2,12 @@ import { elements as el} from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
 
-const fakeDateStart = moment(faker.date.future(5)).format('MM/DD/YYYY');
+const randomMonths = faker.number.int({ min: 2, max: 12 });
+const fakeDateStart = moment().add(randomMonths, 'months').format('MM/DD/YYYY');
 
 class ProductData{
 
-   fillDataProduct(){
+   fillDataProduct(vehice){
 
         cy.get(el.INPUT_START_DATE).type(fakeDateStart);
         cy.get(el.SELECT_INSURANCE).select(Math.trunc(Math.random()*9)+1);

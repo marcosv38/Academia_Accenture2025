@@ -17,6 +17,7 @@ And('escolho o tipo de automóvel {string}', (vehice)=>{
 })
 
 When('insiro os dados do veiculo {string}',(vehice)=>{
+    VehiceData.validatePageAcess(vehice)
     VehiceData.fillVehicleData(vehice)
 })
 
@@ -24,8 +25,8 @@ And('informo os dados do seguro', ()=>{
     InsuranceData.fillDataInsurance()
 })
 
-And('informo os dados do produto {string}', ()=>{
-    ProductData.fillDataProduct()
+And('informo os dados do produto {string}', (vehice)=>{
+    ProductData.fillDataProduct(vehice)
 })
 
 Then('escolho o preço do produto',()=>{

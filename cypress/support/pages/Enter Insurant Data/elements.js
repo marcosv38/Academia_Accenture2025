@@ -10,7 +10,8 @@ export const elements = {
     SELECT_OCCUPATION: '#occupation',
     CHECKBOX_HOBBIES: ':nth-child(3) > .ideal-check',
     INPUT_WEB_SITE: '#website',
-    INPUT_UPLOAD_IMG: 'input[type="file"]',
+    INPUT_UPLOAD_IMG: '#picturecontainer',
     INPUT_NEXT: '#nextenterproductdata',
-    INPUT_PREVIOUS: '#preventervehicledata'
+    INPUT_PREVIOUS: '#preventervehicledata',
+    SPAN_COUNTER_FILDS: '#enterinsurantdata'
 }
