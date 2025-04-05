@@ -9,8 +9,20 @@ class VehiceData {
     validatePageAcess(vehice) {
 
         cy.url().should('contains', '/101/app.php')
+        //Verifica se o título da página está correto
         cy.get(el.LABEL_VEHICE_TYPE).should('have.text', vehice.charAt(0).toUpperCase() + vehice.slice(1) + ' Insurance')
 
+        //Verifica se o contador de campos é diferente de 0
+        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+            expect($span.text()).to.not.equal('0');
+        });
+        //Verifica a aba selecionada
+        cy.get(el.SELECTED_STEP)
+            .find('a')
+            .should('be.visible')
+            .and('contain', 'Enter Vehicle Data');
+
+        cy.log('Aba Enter Vehicle Data validada com sucesso!! Preenchendo os dados solicitados...');
     }
 
     fillVehicleData(vehice) {
@@ -26,7 +38,7 @@ class VehiceData {
             });
 
         cy.get(el.INPUT_PERFORMANCE).type(faker.number.int({ min: 1, max: 2000 }))
-        cy.get(el.INPUT_MANUFACTURE).type(fakeDate)
+        cy.get(el.INPUT_MANUFACTURE).should('have.attr', 'placeholder', 'MM/DD/YYYY').type(fakeDate);
 
         Cypress.env('listPrice', Math.trunc(faker.number.int({ min: 500, max: 100000 })));
         cy.get(el.INPUT_PRICE).type(Cypress.env('listPrice'))
@@ -62,34 +74,34 @@ class VehiceData {
             case 'automobile':
 
                 cy.get(el.SELECT_FUEL)
-                .find('option') // pega todas as opções do select
-                .then(options => {
-                    const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
-                    cy.get(el.SELECT_FUEL).select(Cypress._.sample(values))
-                });
+                    .find('option') // pega todas as opções do select
+                    .then(options => {
+                        const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+                        cy.get(el.SELECT_FUEL).select(Cypress._.sample(values))
+                    });
 
                 cy.get(el.SELECT_NUMBERSEATS)
-                .find('option') // pega todas as opções do select
-                .then(options => {
-                    const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
-                    cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
-                });
+                    .find('option') // pega todas as opções do select
+                    .then(options => {
+                        const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+                        cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
+                    });
 
                 cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
                 break;
             case 'motorcycle':
                 cy.get(el.SELECT_NUMBERSEATS_MOTORCYCLE)
-                .find('option') // pega todas as opções do select
-                .then(options => {
-                    const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
-                    cy.get(el.SELECT_NUMBERSEATS_MOTORCYCLE).select(Cypress._.sample(values))
-                });
+                    .find('option') // pega todas as opções do select
+                    .then(options => {
+                        const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+                        cy.get(el.SELECT_NUMBERSEATS_MOTORCYCLE).select(Cypress._.sample(values))
+                    });
                 cy.get(el.SELECT_MODEL)
-                .find('option') // pega todas as opções do select
-                .then(options => {
-                    const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
-                    cy.get(el.SELECT_MODEL).select(Cypress._.sample(values))
-                });
+                    .find('option') // pega todas as opções do select
+                    .then(options => {
+                        const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+                        cy.get(el.SELECT_MODEL).select(Cypress._.sample(values))
+                    });
                 cy.get(el.INPUT_CYLINDERS).type(faker.number.int({ min: 1, max: 2000 }))
                 break;
             case 'camper':
@@ -97,8 +109,11 @@ class VehiceData {
                 break;
         }
 
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').should('have.text', '0')
-
+        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+            expect($span.text()).to.equal('0');
+        });
+        cy.get(el.FILD_INVALID).should('not.exist')//Não existe campo inválido
+        cy.log('Todos os campos preenchidos com sucesso!');
         cy.get(el.BUTTON_NEXT).click()
     }
 

@@ -8,6 +8,8 @@ export const elements = {
     INPUT_SEND_EMAIL: '#sendemail',
     INPUT_PREVIOUS: '#prevselectpriceoption',
     MODAL_SEND_QUOTE: '.sweet-alert',
-    BTN_CONFIRM_QUOTE: '.confirm'
-    
+    BTN_CONFIRM_QUOTE: '.confirm',
+    SPAN_COUNTER_FILDS: '#sendquote',
+    LOADER_QUOTE: '#xLoaderQuote',
+    SELECTED_STEP: '.idealsteps-step-active'
 }

@@ -8,5 +8,7 @@ export const elements = {
     CHECKBOX_OPTIONS_DAMAGE: Cypress._.sample(optionalProducts),
     SELECT_COURTES: '#courtesycar',
     INPUT_NEXT: '#nextselectpriceoption',
-    INPUT_PREVIOUS: '#preventerinsurancedata'
+    INPUT_PREVIOUS: '#preventerinsurancedata',
+    SPAN_COUNTER_FILDS: '#enterproductdata',
+    SELECTED_STEP: '.idealsteps-step-active'
 }

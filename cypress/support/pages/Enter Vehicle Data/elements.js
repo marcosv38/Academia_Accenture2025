@@ -17,5 +17,8 @@ export const elements = {
     RADIO_HAND: Cypress._.sample(hand),
     BUTTON_NEXT: '#nextenterinsurantdata',
     LABEL_VEHICE_TYPE: '#selectedinsurance',
-    SPAN_COUNTER_FILDS: '#entervehicledata'
+    SPAN_COUNTER_FILDS: '#entervehicledata',
+    FILD_INVALID: '.invalid',
+    SELECTED_STEP: '.idealsteps-step-active'
+    
 }

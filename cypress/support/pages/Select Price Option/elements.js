@@ -11,6 +11,9 @@ export const elements = {
     DOWNLOAD_QUOTE: '#downloadquote',
     VIEW_QUOTE: '#viewquote',
     INPUT_NEXT: '#nextsendquote',
-    INPUT_PREVIOUS: '#preventerproductdata'
+    INPUT_PREVIOUS: '#preventerproductdata',
+    SPAN_COUNTER_FILDS: '#selectpriceoption',
+    LOADER_PRICE: '#xLoaderPrice',
+    SELECTED_STEP: '.idealsteps-step-active'
 }
 
