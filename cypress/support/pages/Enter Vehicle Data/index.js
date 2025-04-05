@@ -25,7 +25,7 @@ class VehiceData {
         cy.log('Aba Enter Vehicle Data validada com sucesso!! Preenchendo os dados solicitados...');
     }
 
-    fillVehicleData(vehice) {
+    fillVehicleData(vehice, fields) {
 
         cy.get(el.SELECT_MAKE)
             .find('option') // pega todas as opções do select
@@ -65,8 +65,8 @@ class VehiceData {
                     const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
                     cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
                 });
-
-            cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
+            if (fields != 'obrigatórios')
+                cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
 
         }
 
@@ -86,8 +86,8 @@ class VehiceData {
                         const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
                         cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
                     });
-
-                cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
+                if (fields != 'obrigatórios')
+                    cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
                 break;
             case 'motorcycle':
                 cy.get(el.SELECT_NUMBERSEATS_MOTORCYCLE)
@@ -105,7 +105,8 @@ class VehiceData {
                 cy.get(el.INPUT_CYLINDERS).type(faker.number.int({ min: 1, max: 2000 }))
                 break;
             case 'camper':
-                cy.get(el.RADIO_HAND).click({ force: true })
+                if(fields != 'obrigatórios') 
+                    cy.get(el.RADIO_HAND).click({ force: true })
                 break;
         }
 

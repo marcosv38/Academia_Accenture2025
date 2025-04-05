@@ -2,9 +2,7 @@ import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 
 const userFaker = {
-    name: faker.name.fullName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
     comment: faker.lorem.sentence(20),
 }
 
@@ -29,13 +27,13 @@ class SendQuote {
         cy.get(el.INPUT_EMAIL).type(userFaker.email, { log: false });
         cy.get(el.INPUT_PHONE).type(Cypress.env('phoneQuote'), { log: false });
         cy.get(el.INPUT_USERNAME).type(Cypress.env('userNameQuote'), { log: false });
-        cy.get(el.INPUT_PASSWORD).type(userFaker.password, { log: false });
-        cy.get(el.INPUT_CONFIRM).type(userFaker.password, { log: false });
+        cy.get(el.INPUT_PASSWORD).type(Cypress.env('passwordQuote'), { log: false });
+        cy.get(el.INPUT_CONFIRM).type(Cypress.env('passwordQuote'), { log: false });
         cy.get(el.INPUT_COMMENTS).type(userFaker.comment);
 
         //Salvando dados no ambiente
         Cypress.env('emailQuote', userFaker.email)
-        Cypress.env('passwordQuote', userFaker.password)
+        
 
 
         cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {

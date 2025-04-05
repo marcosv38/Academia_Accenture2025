@@ -16,16 +16,16 @@ And('clico no tipo de veículo {string}', (vehice)=>{
     Home.selectVehicle(vehice)
 })
 
-When('preencho os dados do veículo {string}',(vehice)=>{
+When('preencho os dados {string} do veículo {string}',(fields,vehice)=>{
     VehiceData.validatePageAcess(vehice)
-    VehiceData.fillVehicleData(vehice)
+    VehiceData.fillVehicleData(vehice,fields)
 })
 
-And('informo os dados do seguro', ()=>{
-    InsuranceData.fillDataInsurance()
+And('informo os dados {string} do segurado', (fields)=>{
+    InsuranceData.fillDataInsurance(fields)
 })
 
-And('preencho os dados do produto {string}', (vehice)=>{
+And('preencho os dados {string} do produto {string}', (fields,vehice)=>{
     ProductData.fillDataProduct(vehice)
 })
 

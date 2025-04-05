@@ -11,5 +11,6 @@ export const elements = {
     BTN_CONFIRM_QUOTE: '.confirm',
     SPAN_COUNTER_FILDS: '#sendquote',
     LOADER_QUOTE: '#xLoaderQuote',
-    SELECTED_STEP: '.idealsteps-step-active'
+    SELECTED_STEP: '.idealsteps-step-active',
+    FILD_INVALID: '.invalid',
 }

@@ -21,7 +21,7 @@ const user = {
 
 class InsuranceData {
 
-    fillDataInsurance() {
+    fillDataInsurance(fields) {
         //Verifica a aba selecionada
         cy.get(el.SELECTED_STEP)
             .find('a')
@@ -44,8 +44,14 @@ class InsuranceData {
 
 
         cy.get(el.INPUT_BIRTHDATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').type(`${month}/${day}/${year}`);
-        cy.get(el.RADIO_GENDER).check({ force: true });
-        cy.get(el.INPUT_STREET_ADRESS).type(user.streetAddress);
+
+        if(fields != 'obrigatórios'){
+            cy.get(el.RADIO_GENDER).check({ force: true });
+            cy.get(el.INPUT_STREET_ADRESS).type(user.streetAddress);
+            cy.get(el.INPUT_CITY).type(faker.location.city());
+            cy.get(el.INPUT_WEB_SITE).type(user.webSite);
+            cy.get(el.INPUT_UPLOAD_IMG).selectFile('Cypress/assets/channels4_profile.jpg', { force: true });
+        } 
 
         cy.get(el.SELECT_COUNTRY)
             .find('option') // pega todas as opções do select
@@ -55,7 +61,7 @@ class InsuranceData {
             });
 
         cy.get(el.INPUT_ZIPCODE).type(user.zipCode);
-        cy.get(el.INPUT_CITY).type(faker.location.city());
+        
 
         cy.get(el.SELECT_OCCUPATION)
             .find('option') // pega todas as opções do select
@@ -65,8 +71,7 @@ class InsuranceData {
             });
 
         cy.get(el.CHECKBOX_HOBBIES).check({ force: true });
-        cy.get(el.INPUT_WEB_SITE).type(user.webSite);
-        cy.get(el.INPUT_UPLOAD_IMG).selectFile('Cypress/assets/channels4_profile.jpg', { force: true });
+        
 
         cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
             expect($span.text()).to.equal('0');
