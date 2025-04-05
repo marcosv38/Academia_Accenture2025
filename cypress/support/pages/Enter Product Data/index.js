@@ -18,9 +18,9 @@ class ProductData{
         });
 
         cy.get(el.SELECT_DAMAGE)
-        .find('option') // pega todas as opções do select
+        .find('option') 
         .then(options => {
-          const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+          const values = [...options].map(opt => opt.value).slice(1);
           cy.get(el.SELECT_DAMAGE).select(Cypress._.sample(values))
         });
 
@@ -31,16 +31,16 @@ class ProductData{
         if(vehice === 'automobile'){
 
             cy.get(el.SELECT_COURTES)
-            .find('option') // pega todas as opções do select
+            .find('option')
             .then(options => {
-              const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+              const values = [...options].map(opt => opt.value).slice(1);
               cy.get(el.SELECT_COURTES).select(Cypress._.sample(values))
             });
             
             cy.get(el.SELECT_MERIT)
-            .find('option') // pega todas as opções do select
+            .find('option') 
             .then(options => {
-              const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+              const values = [...options].map(opt => opt.value).slice(1);
               cy.get(el.SELECT_MERIT).select(Cypress._.sample(values))
             });
 

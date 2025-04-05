@@ -25,13 +25,13 @@ class VehiceData {
                 cy.log('Selected make: ' + selectedValue);
             });
 
-        cy.get(el.INPUT_PERFORMANCE).type(Math.trunc(Math.random() * 1999) + 1)
+        cy.get(el.INPUT_PERFORMANCE).type(faker.number.int({ min: 1, max: 2000 }))
         cy.get(el.INPUT_MANUFACTURE).type(fakeDate)
 
-        Cypress.env('listPrice', Math.trunc(Math.random() * (100000 - 500) + 500));
+        Cypress.env('listPrice', Math.trunc(faker.number.int({ min: 500, max: 100000 })));
         cy.get(el.INPUT_PRICE).type(Cypress.env('listPrice'))
 
-        Cypress.env('annualMileage', Math.trunc(Math.random() * (100000 - 100) + 100));
+        Cypress.env('annualMileage', Math.trunc(faker.number.int({ min: 100, max: 100000 })));
         cy.get(el.INPUT_MILEAGE).type(Cypress.env('annualMileage'))
 
 
@@ -44,8 +44,8 @@ class VehiceData {
                     cy.get(el.SELECT_FUEL).select(Cypress._.sample(values))
                 });
 
-            cy.get(el.INPUT_PAYLOAD).type(Math.trunc(Math.random() * 999) + 1)
-            cy.get(el.INPUT_TOTAL_WEIGHT).type(Math.trunc(Math.random() * (50000 - 100) + 100))
+            cy.get(el.INPUT_PAYLOAD).type(faker.number.int({ min: 1, max: 1000 }))
+            cy.get(el.INPUT_TOTAL_WEIGHT).type(faker.number.int({ min: 100, max: 50000 }))
 
             cy.get(el.SELECT_NUMBERSEATS)
                 .find('option') // pega todas as opções do select
@@ -54,18 +54,20 @@ class VehiceData {
                     cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
                 });
 
-            cy.get(el.INPUT_PLATE).type(Math.floor(1000000000 + Math.random() * 9000000000))
+            cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
 
         }
 
         switch (vehice) {
             case 'automobile':
+
                 cy.get(el.SELECT_FUEL)
                 .find('option') // pega todas as opções do select
                 .then(options => {
                     const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
                     cy.get(el.SELECT_FUEL).select(Cypress._.sample(values))
                 });
+
                 cy.get(el.SELECT_NUMBERSEATS)
                 .find('option') // pega todas as opções do select
                 .then(options => {
@@ -73,7 +75,7 @@ class VehiceData {
                     cy.get(el.SELECT_NUMBERSEATS).select(Cypress._.sample(values))
                 });
 
-                cy.get(el.INPUT_PLATE).type(Math.floor(1000000000 + Math.random() * 9000000000))
+                cy.get(el.INPUT_PLATE).type(faker.number.int({ min: 1000000000, max: 9000000000 }))
                 break;
             case 'motorcycle':
                 cy.get(el.SELECT_NUMBERSEATS_MOTORCYCLE)
@@ -88,7 +90,7 @@ class VehiceData {
                     const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
                     cy.get(el.SELECT_MODEL).select(Cypress._.sample(values))
                 });
-                cy.get(el.INPUT_CYLINDERS).type(Math.trunc(Math.random() * 1999) + 1)
+                cy.get(el.INPUT_CYLINDERS).type(faker.number.int({ min: 1, max: 2000 }))
                 break;
             case 'camper':
                 cy.get(el.RADIO_HAND).click({ force: true })

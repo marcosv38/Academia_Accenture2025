@@ -4,4 +4,5 @@ export const elements = {
     LABEL_LOADING: '#LoadingPDF',
     INPUT_NEXT: '#nextsendquote',
     INPUT_PREVIOUS: '#selectpriceoption'
+    
 }

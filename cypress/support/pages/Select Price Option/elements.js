@@ -13,3 +13,4 @@ export const elements = {
     INPUT_NEXT: '#nextsendquote',
     INPUT_PREVIOUS: '#preventerproductdata'
 }
+

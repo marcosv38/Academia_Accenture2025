@@ -1,8 +1,6 @@
 import { elements as el} from "./elements";
 import { faker } from '@faker-js/faker';
 
-
-
 const fakeDateBirth = faker.date.past(51);
 const month = String(fakeDateBirth.getMonth() + 1).padStart(2, '0'); // Ajusta para 2 dígitos
 const day = String(fakeDateBirth.getDate()).padStart(2, '0'); // Ajusta para 2 dígitos
@@ -19,8 +17,6 @@ const user = {
     state: faker.location.state(),
     zipCode: faker.location.zipCode('########').replace('-', '')
 }
-
-
 
 class InsuranceData{
 

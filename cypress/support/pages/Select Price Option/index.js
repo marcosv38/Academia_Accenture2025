@@ -1,5 +1,6 @@
 import { elements as el} from "./elements";
-const typePlan = Math.trunc(Math.random()*4)
+import { faker } from '@faker-js/faker';
+const typePlan = faker.number.int({ min: 0, max: 3 })
 
 
 class PriceOption{

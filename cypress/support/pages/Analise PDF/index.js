@@ -9,7 +9,7 @@ class QuoteAnalysis{
 
         cy.get(el.LABEL_LOADING, { timeout: 15000 }).should('not.exist');
         cy.get(el.INPUT_PREVIOUS).click({ force: true });
-        cy.get(el.INPUT_NEXT, { timeout: 15000 }).should('exist');
+        cy.get(el.INPUT_NEXT, { timeout: 5000 }).should('exist');
         cy.get(el.INPUT_NEXT).click();
     }
 

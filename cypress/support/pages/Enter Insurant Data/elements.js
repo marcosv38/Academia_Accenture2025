@@ -1,5 +1,6 @@
 const hobbies = ['#speeding', '#bungeejumping', '#cliffdiving', '#skydiving', '#other'];
 const gender = ['#genderfemale', '#gendermale'];
+
 export const elements = {
     INPUT_FIRSTNAME: '#firstname',
     INPUT_LASTNAME: '#lastname',

@@ -12,11 +12,11 @@ Given('que estou na página inicial do site',()=>{
     Home.visitPage()
 })
 
-And('escolho o tipo de automóvel {string}', (vehice)=>{
+And('clico no tipo de veículo {string}', (vehice)=>{
     Home.selectVehicle(vehice)
 })
 
-When('insiro os dados do veiculo {string}',(vehice)=>{
+When('preencho os dados do veículo {string}',(vehice)=>{
     VehiceData.validatePageAcess(vehice)
     VehiceData.fillVehicleData(vehice)
 })
@@ -25,23 +25,25 @@ And('informo os dados do seguro', ()=>{
     InsuranceData.fillDataInsurance()
 })
 
-And('informo os dados do produto {string}', (vehice)=>{
+And('preencho os dados do produto {string}', (vehice)=>{
     ProductData.fillDataProduct(vehice)
 })
 
-Then('escolho o preço do produto',()=>{
+Then('seleciono o preço do produto',()=>{
     PriceOption.choosePrice()
 })
 
-And('valido o pdf',()=>{
+And('gero o PDF da proposta',()=>{
     QuoteAnalysis.downloadQuote()
+})
+
+And('valido o pdf da proposta',()=>{
     QuoteAnalysis.analysisPDF()
 })
 
-And('envio a proposta',()=>{
+And('envio a proposta para o e-mail do cliente',()=>{
     SendQuote.sendQuote()
 })
-
 
 And('valido o envio da proposta',()=>{
     SendQuote.validateSendProposal()
