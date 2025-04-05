@@ -18,7 +18,7 @@ export const elements = {
     BUTTON_NEXT: '#nextenterinsurantdata',
     LABEL_VEHICE_TYPE: '#selectedinsurance',
     SPAN_COUNTER_FILDS: '#entervehicledata',
+    SELECTED_STEP: '.idealsteps-step-active',
     FILD_INVALID: '.invalid',
-    SELECTED_STEP: '.idealsteps-step-active'
     
 }

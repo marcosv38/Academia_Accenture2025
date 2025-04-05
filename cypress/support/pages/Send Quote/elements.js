@@ -13,4 +13,10 @@ export const elements = {
     LOADER_QUOTE: '#xLoaderQuote',
     SELECTED_STEP: '.idealsteps-step-active',
     FILD_INVALID: '.invalid',
+    INPUT_NEXT: '#nextsendquote',
+    LABEL_ERROR: '.error',
+    MODAL_ERROR: '.sweet-alert',
+    MODAL_ALERT_ERROR: 'h2',
+    MODAL_BTN_CONFIRM: '.confirm'
+    
 }

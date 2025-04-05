@@ -9,7 +9,7 @@ export const elements = {
     SELECT_COURTES: '#courtesycar',
     INPUT_NEXT: '#nextselectpriceoption',
     INPUT_PREVIOUS: '#preventerinsurancedata',
-    SPAN_COUNTER_FILDS: '#enterproductdata',
+    SPAN_COUNTER_FIELDS: '#enterproductdata',
     SELECTED_STEP: '.idealsteps-step-active',
-    FILD_INVALID: '.invalid',
+    FIELD_INVALID: '.invalid',
 }

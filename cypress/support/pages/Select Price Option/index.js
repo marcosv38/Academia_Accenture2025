@@ -2,7 +2,6 @@ import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 const typePlan = faker.number.int({ min: 0, max: 3 })
 
-
 class PriceOption {
 
     choosePrice() {
@@ -68,6 +67,30 @@ class PriceOption {
         cy.log('Plano selecionado com sucesso!');
         cy.get(el.INPUT_NEXT, { timeout: 5000 }).should('be.visible');
 
+    }
+
+    nextPagePrice(){
+        cy.get('#sendquote').click();
+    }
+
+    priceOptionsError(){
+
+        cy.get(el.LOADER_PRICE).should('be.visible');//Verificar se o loader está visível
+        cy.get(el.LOADER_PRICE)
+        .find('p')
+        .should('be.visible')
+        .and('contain', 'Please, complete the first three steps to see the price table.');
+
+        cy.get(el.SELECTED_STEP)
+        .find('a')
+        .should('be.visible')
+        .and('contain', 'Select Price Option');
+
+        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+            expect($span.text()).to.not.equal('0');
+        });
+
+        cy.log('Aba Select Price Option validada com sucesso!!');
     }
 
 }

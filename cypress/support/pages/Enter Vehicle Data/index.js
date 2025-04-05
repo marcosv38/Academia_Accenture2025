@@ -2,6 +2,7 @@ import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
 
+
 const fakeDate = moment(faker.date.past(10)).format('MM/DD/YYYY');
 
 class VehiceData {
@@ -110,13 +111,30 @@ class VehiceData {
                 break;
         }
 
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
-            expect($span.text()).to.equal('0');
-        });
-        cy.get(el.FILD_INVALID).should('not.exist')//Não existe campo inválido
-        cy.log('Todos os campos preenchidos com sucesso!');
-        cy.get(el.BUTTON_NEXT).click()
+        if(fields != 'inválidos'){
+            //validação de campos obrigatórios
+            cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+                expect($span.text()).to.equal('0');
+            });
+        
+            cy.get(el.FILD_INVALID).should('not.exist')//Não existe campo inválido
+            cy.log('Todos os campos preenchidos com sucesso!');
+        }else{
+            //validação de campos obrigatórios
+            cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+                expect($span.text()).not.to.equal('0');
+            });
+        
+            cy.get(el.FILD_INVALID).should('exist')//Existe campo inválido
+            cy.log('Campos inválidos foram detectados!');
+        }
+        
     }
+
+    nextPageVehicle() {
+        cy.get(el.BUTTON_NEXT).click();
+    }
+
 
 }
 

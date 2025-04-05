@@ -14,6 +14,7 @@ export const elements = {
     INPUT_PREVIOUS: '#preventerproductdata',
     SPAN_COUNTER_FILDS: '#selectpriceoption',
     LOADER_PRICE: '#xLoaderPrice',
-    SELECTED_STEP: '.idealsteps-step-active'
+    SELECTED_STEP: '.idealsteps-step-active',
+    FILD_INVALID: '.invalid',
 }
 

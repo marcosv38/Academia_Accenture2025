@@ -19,4 +19,5 @@ export const elements = {
     SPAN_COUNTER_FILDS: '#enterinsurantdata',
     SELECTED_STEP: '.idealsteps-step-active',
     FILD_INVALID: '.invalid',
+    SPAN_ERROR: '.error',
 }
