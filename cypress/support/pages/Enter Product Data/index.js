@@ -10,13 +10,44 @@ class ProductData{
    fillDataProduct(vehice){
 
         cy.get(el.INPUT_START_DATE).type(fakeDateStart);
-        cy.get(el.SELECT_INSURANCE).select(Math.trunc(Math.random()*9)+1);
-        cy.get(el.SELECT_MERIT).select(Math.trunc(Math.random()*17)+1);
-        cy.get(el.SELECT_DAMAGE).select(Math.trunc(Math.random()*3)+1);
-        cy.get(el.CHECKBOX_OPTIONS_DAMAGE).click();
-        cy.get(el.SELECT_COURTES).select(Math.trunc(Math.random()*2)+1);
-        cy.get(el.INPUT_NEXT).click();
+        cy.get(el.SELECT_INSURANCE)
+        .find('option') // pega todas as opções do select
+        .then(options => {
+          const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+          cy.get(el.SELECT_INSURANCE).select(Cypress._.sample(values))
+        });
 
+        cy.get(el.SELECT_DAMAGE)
+        .find('option') // pega todas as opções do select
+        .then(options => {
+          const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+          cy.get(el.SELECT_DAMAGE).select(Cypress._.sample(values))
+        });
+
+        cy.get(el.CHECKBOX_OPTIONS_DAMAGE).click({force:true});
+        
+
+        //verifica se o veiculo é um automóvel
+        if(vehice === 'automobile'){
+
+            cy.get(el.SELECT_COURTES)
+            .find('option') // pega todas as opções do select
+            .then(options => {
+              const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+              cy.get(el.SELECT_COURTES).select(Cypress._.sample(values))
+            });
+            
+            cy.get(el.SELECT_MERIT)
+            .find('option') // pega todas as opções do select
+            .then(options => {
+              const values = [...options].map(opt => opt.value).slice(1);//ignora o primeiro elemento
+              cy.get(el.SELECT_MERIT).select(Cypress._.sample(values))
+            });
+
+        }
+
+        cy.get(el.INPUT_NEXT).click();
+        
     }
 
 }

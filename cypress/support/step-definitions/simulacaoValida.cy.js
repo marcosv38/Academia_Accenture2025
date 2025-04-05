@@ -1,9 +1,9 @@
 import {Given, When, And, Then, Before, After, But} from 'cypress-cucumber-preprocessor/steps'
 import Home from '../pages/Home'
 import VehiceData from '../pages/Enter Vehicle Data'
-import InsuranceData from '../pages/Enter Insurance Data'
+import InsuranceData from '../pages/Enter Insurant Data'
 import ProductData from '../pages/Enter Product Data'
-import PriceOption from '../pages/Enter Price Option'
+import PriceOption from '../pages/Select Price Option'
 import SendQuote from '../pages/Send Quote'
 import QuoteAnalysis from '../pages/Analise PDF'
 

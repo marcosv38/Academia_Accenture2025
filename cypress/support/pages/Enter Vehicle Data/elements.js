@@ -1,3 +1,5 @@
+const hand = ['#righthanddriveyes', '#righthanddriveno'];
+
 export const elements = {
     SELECT_MAKE: 'select[name="Make"]',
     INPUT_PERFORMANCE: '#engineperformance',
@@ -12,7 +14,7 @@ export const elements = {
     INPUT_TOTAL_WEIGHT: '#totalweight',
     SELECT_MODEL: '#model',
     INPUT_CYLINDERS: '#cylindercapacity',
-    RADIO_HAND: '#insurance-form > div > section:nth-child(1) > div:nth-child(5) > p > label:nth-child(1) > span',
+    RADIO_HAND: Cypress._.sample(hand),
     BUTTON_NEXT: '#nextenterinsurantdata',
     LABEL_VEHICE_TYPE: '#selectedinsurance',
     SPAN_COUNTER_FILDS: '#entervehicledata'
