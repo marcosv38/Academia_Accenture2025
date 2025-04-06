@@ -1,12 +1,16 @@
 #utf-8
 #language: pt
 
-Funcionalidade: Gerar oferta de seguro para automóvel
-  Cenário: Geração válida de oferta de seguro para automóvel
+Funcionalidade: Bloqueio de campos no envio da proposta de seguro com dados inválidos
+  Cenário: O sistema impede a elaboração de porposta com dados inválidos
     Dado que estou na página inicial do site
-    E clico no tipo de veículo 'automobile'
-    Quando preencho os dados 'obrigatórios' do veículo 'automobile'
+    E escolho o tipo de veículo 'automobile'
+    Quando preencho os campos com dados 'obrigatórios' do 'automobile'
+    E clico em next para ir à aba de dados do segurado
     E informo os dados inválidos do segurado
+    E clico em next para ir à aba de dados do produto
     E preencho os dados 'inválidos' do produto 'automobile'
+    E clico em next para ir à aba de seleção de preço
     Então price options não deve apresentar as opções de preço
-    E a aba de envio não deve apresentar os campos de envio
+    E clico na aba Send Quote para prosseguir
+    E a aba de envio não deve exibir os campos de preenchimento

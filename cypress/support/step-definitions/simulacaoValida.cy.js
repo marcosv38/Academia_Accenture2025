@@ -12,27 +12,39 @@ Given('que estou na página inicial do site',()=>{
     Home.visitPage()
 })
 
-And('clico no tipo de veículo {string}', (vehice)=>{
+And('escolho o tipo de veículo {string}', (vehice)=>{
     Home.selectVehicle(vehice)
 })
 
-When('preencho os dados {string} do veículo {string}',(fields,vehice)=>{
+When('preencho os campos com dados {string} do {string}',(fields,vehice)=>{
     VehiceData.validatePageAcess(vehice)
     VehiceData.fillVehicleData(vehice,fields)
+})
+
+
+And('clico em next para ir à aba de dados do segurado', ()=>{
     VehiceData.nextPageVehicle();
 })
 
+
 And('informo os dados {string} do segurado', (fields)=>{
     InsuranceData.fillDataInsurance(fields)
+   
+})
+
+And('clico em next para ir à aba de dados do produto', ()=>{
     InsuranceData.nextPageInsurance();
 })
 
 And('preencho os dados {string} do produto {string}', (fields,vehice)=>{
-    ProductData.fillDataProduct(vehice,fields)
+    ProductData.fillDataProduct(fields,vehice)
+})
+
+And('clico em next para ir à aba de seleção de preço', ()=>{
     ProductData.nextPageProduct();
 })
 
-Then('seleciono o preço do produto',()=>{
+And('seleciono o preço do produto',()=>{
     PriceOption.choosePrice()
     
 })
@@ -41,7 +53,7 @@ And('clico em next para prosseguir',()=>{
     PriceOption.nextPagePrice()
 })
 
-And('envio a proposta para o e-mail do cliente',()=>{
+Then('envio a proposta para o e-mail do cliente',()=>{
     SendQuote.sendQuote()
     SendQuote.clickSendQuote()
 })

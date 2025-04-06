@@ -65,7 +65,7 @@ class PriceOption {
             expect($span.text()).to.equal('0');
         });
         cy.log('Plano selecionado com sucesso!');
-        cy.get(el.INPUT_NEXT, { timeout: 5000 }).should('be.visible');
+        
 
     }
 
@@ -74,7 +74,7 @@ class PriceOption {
     }
 
     nextPagePrice(){
-        cy.get(el.nextsendquote).click();
+        cy.get(el.INPUT_NEXT,{ timeout: 10000 }).click();
     }
 
     priceOptionsError() {

@@ -78,17 +78,18 @@ class ProductData {
 
   }
 
-  nextPageProduct() {
-    cy.get(el.INPUT_NEXT).click();
-  }
+  
 
 
-  ProductDataValidate(vehice,type) {
+  ProductDataValidate() {
     cy.wait(500);
     VehiceData.verifyFieldRangeDate(el.INPUT_START_DATE, moment().add(1, 'months').format('MM/DD/YYYY'), "-","future");
     cy.log('Validação concluída: Todos os campos dentro do escopo do teste de BVA foram verificados e aprovados com sucesso!');
   }
   
+  nextPageProduct() {
+    cy.get(el.INPUT_NEXT).click();
+  }
 }
 
 export default new ProductData();

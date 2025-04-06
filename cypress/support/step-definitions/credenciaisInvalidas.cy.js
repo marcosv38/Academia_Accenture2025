@@ -1,8 +1,7 @@
 import {Given, When, And, Then, Before, After, But} from 'cypress-cucumber-preprocessor/steps'
 import SendQuote from '../pages/Send Quote'
 
-And('informo dados {string} do usuário', (fields)=>{
-    SendQuote.nextSendQuote()
+And('insiro dados {string} do usuário', (fields)=>{
     SendQuote.sendQuote(fields)
 })
 

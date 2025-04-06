@@ -9,11 +9,11 @@ When('testo os campos {string} do veículo {string}', (fields,Vehicle)=>{
     VehiceData.vehicleDataValidate(Vehicle,fields)
 })
 
-And('testo os campos {string} do segurado', (fields)=>{
+And('testo os campos de informação do segurado', (fields)=>{
      InsuranceData.insuranceDataValidate()
 })
 
 
-Then('testo os campos {string} do produto {string}', (fields,Vehicle)=>{
+Then('testo os campos de seguro', ()=>{
     ProductData.ProductDataValidate()
 })

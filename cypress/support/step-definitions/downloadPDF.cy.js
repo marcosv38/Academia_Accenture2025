@@ -5,6 +5,6 @@ And('gero o PDF da proposta',()=>{
     QuoteAnalysis.downloadQuote()
 })
 
-And('valido o pdf da proposta',()=>{
+Then('valido o pdf da proposta',()=>{
     QuoteAnalysis.analysisPDF()
 })

@@ -20,7 +20,6 @@ class QuoteAnalysis{
     analysisPDF(){
         // Usa uma task customizada chamada 'readPdf' para ler o conteúdo do PDF salvo
         cy.task('readPdf', 'cypress/downloads/Tricentis_Insurance_Quote.pdf')
-        
             .should('contain', Cypress.env('make'))
             .and('contain', Cypress.env('lastName'))
             .and('contain', Cypress.env('firstName'))
@@ -28,7 +27,7 @@ class QuoteAnalysis{
             .and('contain', Cypress.env('annualMileage'))
             .and('contain', Cypress.env('typeInsurant'))
             .and('contain', Cypress.env('priceInsurant'))
-            
+        cy.log('A proposta condiz com o esperado!');
     }
     
 }

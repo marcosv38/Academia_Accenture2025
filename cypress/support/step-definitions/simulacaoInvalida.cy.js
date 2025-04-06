@@ -7,37 +7,18 @@ import PriceOption from '../pages/Select Price Option'
 import SendQuote from '../pages/Send Quote'
 
 
-
-Given('que estou na página inicial do site',()=>{
-    Home.visitPage()
-})
-
-And('clico no tipo de veículo {string}', (vehice)=>{
-    Home.selectVehicle(vehice)
-})
-
-When('preencho os dados {string} do veículo {string}',(fields,vehice)=>{
-    VehiceData.validatePageAcess(vehice)
-    VehiceData.fillVehicleData(vehice,fields)
-    VehiceData.nextPageVehicle();
-})
-
 And('informo os dados inválidos do segurado', ()=>{
     InsuranceData.fillInvalidDataInsurance()
-    InsuranceData.nextPageInsurance();
-})
-
-And('preencho os dados {string} do produto {string}', (fields,vehice)=>{
-    cy.log(fields)
-    ProductData.fillDataProduct(fields,vehice)
-    ProductData.nextPageProduct();
 })
 
 Then('price options não deve apresentar as opções de preço',()=>{
     PriceOption.priceOptionsError();
-    PriceOption.clickPagePrice();
 })
 
-And('a aba de envio não deve apresentar os campos de envio',()=>{
+And('a aba de envio não deve exibir os campos de preenchimento',()=>{
     SendQuote.sendQuoteError()
+})
+
+Then('clico na aba Send Quote para prosseguir sem escolher o plano',()=>{
+    PriceOption.clickPagePrice()
 })
