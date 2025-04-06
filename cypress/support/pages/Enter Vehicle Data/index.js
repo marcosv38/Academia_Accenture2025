@@ -133,7 +133,7 @@ class VehiceData {
 
 
 
-    vehicleDataBVA(vehice, fields) {
+    vehicleDataValidate(vehice, type) {
 
         cy.get(el.SELECT_MAKE).select(3)
 
@@ -167,8 +167,6 @@ class VehiceData {
         }
     }
 
-
-
     nextPageVehicle() {
         cy.get(el.BUTTON_NEXT).click();
     }
@@ -178,48 +176,59 @@ class VehiceData {
         cy.get(el.FIELD_INVALID).should('exist')//Campo inválido
         cy.get(el.LABEL_ERROR).should('be.visible')
         cy.log('Campo inválido: ' + selector + ' - valor: ' + (minRange - 1))
+
         cy.get(selector).clear().type(minRange)
-        cy.get(el.FIELD_INVALID).should('not.exist')//Campo inválido
-        cy.get(el.LABEL_ERROR).should('not.be.visible')
+        this.spanErrorOff();
+        cy.log('Campo válido: ' + selector + ' - valor: ' + minRange)
+
+        cy.get(selector).clear().type(minRange + 1)
+        this.spanErrorOff();
         cy.log('Campo válido: ' + selector + ' - valor: ' + minRange)
 
         cy.get(selector).clear().type(maxRange + 1)
         cy.get(el.FIELD_INVALID).should('exist')//Campo inválido
         cy.get(el.LABEL_ERROR).should('be.visible')
         cy.log('Campo inválido: ' + selector + ' - valor: ' + (maxRange + 1))
+
         cy.get(selector).clear().type(maxRange)
-        cy.get(el.FIELD_INVALID).should('not.exist')//Campo inválido
-        cy.get(el.LABEL_ERROR).should('not.be.visible')
+        this.spanErrorOff();
+        cy.log('Campo válido: ' + selector + ' - valor: ' + maxRange)
+
+        cy.get(selector).clear().type(maxRange - 1)
+        this.spanErrorOff();
         cy.log('Campo válido: ' + selector + ' - valor: ' + maxRange)
         cy.log('Campo aprovado!')
     }
-
-
-
 
     verifyFieldRangeDate(selector, minRange, maxRange, time) {
 
         if (time === "past") {
             if (minRange != "-") {
                 cy.get(selector).clear().type(moment(minRange).add(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('exist')
-                cy.get(el.LABEL_ERROR).should('be.visible')
+                this.spanErrorOn();
                 cy.log('Campo inválido: ' + selector + ' - valor: ' + (moment(minRange).format('MM/DD/YYYY')))
+
                 cy.get(selector).clear().type(moment(minRange).subtract(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('not.exist')
-                cy.get(el.LABEL_ERROR).should('not.be.visible')
+                this.spanErrorOff();
+                cy.log('Campo válido: ' + selector + ' - valor: ' + moment(minRange).format('MM/DD/YYYY'))
+
+                cy.get(selector).clear().type(moment(minRange).subtract(1, 'days').format('MM/DD/YYYY'))
+                this.spanErrorOff();
                 cy.log('Campo válido: ' + selector + ' - valor: ' + moment(minRange).format('MM/DD/YYYY'))
             } else
                 cy.log('Campo com valor máximo infinito')
 
             if (maxRange != "-") {
                 cy.get(selector).clear().type(moment(maxRange).subtract(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('exist')
-                cy.get(el.LABEL_ERROR).should('be.visible')
+                this.spanErrorOn();
                 cy.log('Campo inválido: ' + selector + ' - valor: ' + (moment(maxRange).format('MM/DD/YYYY')))
+
                 cy.get(selector).clear().type(moment(maxRange).add(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('not.exist')
-                cy.get(el.LABEL_ERROR).should('not.be.visible')
+                this.spanErrorOff();
+                cy.log('Campo válido: ' + selector + ' - valor: ' + moment(maxRange).format('MM/DD/YYYY'))
+
+                cy.get(selector).clear().type(moment(maxRange).add(1, 'days').format('MM/DD/YYYY'))
+                this.spanErrorOff();
                 cy.log('Campo válido: ' + selector + ' - valor: ' + moment(maxRange).format('MM/DD/YYYY'))
                 cy.log('Campo aprovado!')
             } else
@@ -229,25 +238,30 @@ class VehiceData {
 
             if (minRange != "-") {
                 cy.get(selector).clear().type(moment(minRange).subtract(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('exist')
-                cy.get(el.LABEL_ERROR).should('be.visible')
+                this.spanErrorOn();
                 cy.log('Campo inválido: ' + selector + ' - valor: ' + (moment(minRange).format('MM/DD/YYYY')))
+
                 cy.get(selector).clear().type(moment(minRange).add(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('not.exist')
-                cy.get(el.LABEL_ERROR).should('not.be.visible')
+                this.spanErrorOff();
+                cy.log('Campo válido: ' + selector + ' - valor: ' + moment(minRange).format('MM/DD/YYYY'))
+
+                cy.get(selector).clear().type(moment(minRange).add(1, 'days').format('MM/DD/YYYY'))
+                this.spanErrorOff();
                 cy.log('Campo válido: ' + selector + ' - valor: ' + moment(minRange).format('MM/DD/YYYY'))
             } else
                 cy.log('Campo com valor mínimo infinito')
 
             if (maxRange != "-") {
                 cy.get(selector).clear().type(moment(maxRange).add(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('exist')
-                cy.get(el.LABEL_ERROR).should('be.visible')
+                this.spanErrorOn();
                 cy.log('Campo inválido: ' + selector + ' - valor: ' + (moment(maxRange).format('MM/DD/YYYY')))
 
                 cy.get(selector).clear().type(moment(maxRange).subtract(1, 'days').format('MM/DD/YYYY'))
-                cy.get(el.FIELD_INVALID).should('not.exist')
-                cy.get(el.LABEL_ERROR).should('not.be.visible')
+                this.spanErrorOff();
+                cy.log('Campo válido: ' + selector + ' - valor: ' + moment(maxRange).format('MM/DD/YYYY'))
+
+                cy.get(selector).clear().type(moment(maxRange).subtract(1, 'days').format('MM/DD/YYYY'))
+                this.spanErrorOff();
                 cy.log('Campo válido: ' + selector + ' - valor: ' + moment(maxRange).format('MM/DD/YYYY'))
                 cy.log('Campo aprovado!')
             } else
@@ -256,6 +270,16 @@ class VehiceData {
         }
 
 
+    }
+
+    spanErrorOn() {
+        cy.get(el.FIELD_INVALID).should('exist')//Campo inválido
+        cy.get(el.LABEL_ERROR).should('be.visible')
+    }
+
+    spanErrorOff() {
+        cy.get(el.FIELD_INVALID).should('not.exist')//Campo inválido
+        cy.get(el.LABEL_ERROR).should('not.be.visible')
     }
 
 }

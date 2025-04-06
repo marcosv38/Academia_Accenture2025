@@ -83,8 +83,8 @@ class ProductData {
   }
 
 
-  ProductDataBVA() {
-    cy.wait(1000);
+  ProductDataValidate(vehice,type) {
+    cy.wait(500);
     VehiceData.verifyFieldRangeDate(el.INPUT_START_DATE, moment().add(1, 'months').format('MM/DD/YYYY'), "-","future");
     cy.log('Validação concluída: Todos os campos dentro do escopo do teste de BVA foram verificados e aprovados com sucesso!');
   }

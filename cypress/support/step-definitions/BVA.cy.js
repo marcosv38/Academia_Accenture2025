@@ -6,14 +6,14 @@ import ProductData from '../pages/Enter Product Data'
 
 
 When('testo os campos {string} do veículo {string}', (fields,Vehicle)=>{
-    VehiceData.vehicleDataBVA(Vehicle,fields)
+    VehiceData.vehicleDataValidate(Vehicle,fields)
 })
 
 And('testo os campos {string} do segurado', (fields)=>{
-    InsuranceData.insuranceDataBVA()
+     InsuranceData.insuranceDataValidate()
 })
 
 
 Then('testo os campos {string} do produto {string}', (fields,Vehicle)=>{
-    ProductData.ProductDataBVA()
+    ProductData.ProductDataValidate()
 })

@@ -118,7 +118,7 @@ class InsuranceData {
     }
 
 
-    insuranceDataBVA() {
+    insuranceDataValidate(type) {
 
         VehiceData.verifyFieldRangeDate(el.INPUT_BIRTHDATE, moment().subtract(18, 'years').format('MM/DD/YYYY'), moment().subtract(70, 'years').format('MM/DD/YYYY'),"past");
         VehiceData.verifyFieldRange(el.INPUT_ZIPCODE,1000,99999999)
