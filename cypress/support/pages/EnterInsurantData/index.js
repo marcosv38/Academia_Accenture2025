@@ -1,7 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import GlobalsValidations from '../pages/ValidacoesGlobais';
+import GlobalsValidations from '../ValidacoesGlobais';
 
 const fakeDateBirth = faker.date.past(51);
 const month = String(fakeDateBirth.getMonth() + 1).padStart(2, '0'); // Ajusta para 2 dígitos
@@ -69,7 +69,6 @@ class InsuranceData {
         }
 
         if (fields === 'inválidos') {
-            this.fillDataInsurance('obrigatórios');
             cy.get(el.SELECT_OCCUPATION).select('default')//Seleciona opção inválida
             GlobalsValidations.fillFormsValidation('inválidos', el.SPAN_COUNTER_FIELDS)
         }

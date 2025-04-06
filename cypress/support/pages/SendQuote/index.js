@@ -1,6 +1,6 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
-import GlobalsValidations from '../pages/ValidacoesGlobais';
+import GlobalsValidations from '../ValidacoesGlobais';
 
 
 const userFaker = {
@@ -15,14 +15,15 @@ class SendQuote {
         cy.get(el.LOADER_QUOTE).should('not.be.visible');//Verificar se o loader está invisível
         GlobalsValidations.pageValidation(el.SPAN_COUNTER_FIELDS,'Send Quote')
 
-        if (fields === 'inválidos') {
+        if (fields != 'inválidos') {
 
             cy.get(el.INPUT_EMAIL).type(userFaker.email, { log: false });
             cy.get(el.INPUT_PHONE).type(Cypress.env('phoneQuote'), { log: false });
             cy.get(el.INPUT_USERNAME).type(Cypress.env('userNameQuote'), { log: false });
             cy.get(el.INPUT_PASSWORD).type(Cypress.env('passwordQuote'), { log: false });
             cy.get(el.INPUT_CONFIRM).type(Cypress.env('passwordQuote'), { log: false });
-
+            Cypress.env('emailQuote', userFaker.email)//Salvando dados no ambiente
+            
         } else {
 
             cy.get(el.INPUT_EMAIL).type('mariaAntonia231gmail.com');
@@ -30,18 +31,18 @@ class SendQuote {
             cy.get(el.INPUT_USERNAME).type('mária-Ântoniã', { log: false });
             cy.get(el.INPUT_PASSWORD).type('ddd81', { log: false });
             cy.get(el.INPUT_CONFIRM).type('trr82', { log: false });
-
+            
         }
 
         cy.get(el.INPUT_COMMENTS).type(userFaker.comment);
-        Cypress.env('emailQuote', userFaker.email)//Salvando dados no ambiente
+        
 
         GlobalsValidations.fillFormsValidation(fields, el.SPAN_COUNTER_FIELDS);
 
     }
 
     clickSendQuote() {
-        cy.get(el.INPUT_SEND_EMAIL).click();
+        cy.get(el.INPUT_SEND_EMAIL).click({force:true});
     }
 
     nextSendQuote() {

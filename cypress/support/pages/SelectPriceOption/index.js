@@ -1,6 +1,6 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
-import GlobalsValidations from '../pages/ValidacoesGlobais';
+import GlobalsValidations from '../ValidacoesGlobais';
 
 const typePlan = faker.number.int({ min: 0, max: 3 })
 

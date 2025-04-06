@@ -27,7 +27,7 @@ class QuoteAnalysis{
             .and('contain', Cypress.env('annualMileage'))
             .and('contain', Cypress.env('typeInsurant'))
             .and('contain', Cypress.env('priceInsurant'))
-        cy.log('A proposta condiz com o esperado!');
+        cy.log('A cotação condiz com os dados informados!');
     }
     
 }

@@ -1,5 +1,5 @@
 import { elements as el } from "./elements";
-
+import moment from 'moment';
 
 class GlobalsValidations {
 

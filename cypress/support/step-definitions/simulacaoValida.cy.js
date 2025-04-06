@@ -49,8 +49,12 @@ And('clico em next para prosseguir', () => {
     PriceOption.nextPagePrice()
 })
 
-Then('envio a proposta para o e-mail do cliente', () => {
-    SendQuote.sendQuote()
+Then('insiro dados {string} do usuário', (fields) => {
+    SendQuote.sendQuote(fields)
+})
+
+And('clico em enviar a proposta para o cliente', () => {
+    cy.log('deveria pegar o botão enviar')
     SendQuote.clickSendQuote()
 })
 

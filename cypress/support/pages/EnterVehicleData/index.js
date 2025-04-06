@@ -1,7 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import GlobalsValidations from '../pages/ValidacoesGlobais';
+import GlobalsValidations from '../ValidacoesGlobais';
 
 const fakeDate = moment(faker.date.past(10)).format('MM/DD/YYYY');
 
@@ -106,7 +106,7 @@ class VehiceData {
                 break;
         }
 
-        GlobalsValidations.fillFormsValidation(fields, SPAN_COUNTER_FIELDS)
+        GlobalsValidations.fillFormsValidation(fields, el.SPAN_COUNTER_FIELDS)
 
     }
 

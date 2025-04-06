@@ -1,7 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import GlobalsValidations from '../pages/ValidacoesGlobais';
+import GlobalsValidations from '../ValidacoesGlobais';
 
 const randomMonths = faker.number.int({ min: 2, max: 12 });
 const fakeDateStart = moment().add(randomMonths, 'months').format('MM/DD/YYYY');
@@ -48,6 +48,11 @@ class ProductData {
         });
 
     }
+
+    if (fields === 'inválidos') {
+      cy.get(el.INPUT_START_DATE).clear();
+    }
+
 
     GlobalsValidations.fillFormsValidation(fields, el.SPAN_COUNTER_FIELDS)
 
