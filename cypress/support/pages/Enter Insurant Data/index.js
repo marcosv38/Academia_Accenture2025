@@ -1,6 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
-
+import VehiceData from '../Enter Vehicle Data'
+import moment from 'moment';
 
 const fakeDateBirth = faker.date.past(51);
 const month = String(fakeDateBirth.getMonth() + 1).padStart(2, '0'); // Ajusta para 2 dígitos
@@ -30,7 +31,7 @@ class InsuranceData {
             .and('contain', 'Enter Insurant Data');
 
         //Verifica se o contador de campos é diferente de 0
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+        cy.get(el.SPAN_COUNTER_FIELDS).find('span').then(($span) => {
             expect($span.text()).to.not.equal('0');
         });
 
@@ -43,15 +44,15 @@ class InsuranceData {
             fName = removeAccents(faker.person.firstName({ sex: 'male' }).replace(/[-']/g, ''))
         }
 
-        cy.get(el.INPUT_FIRSTNAME).type(fName)
+        cy.get(el.INPUT_FIRSTNAME).clear().type(fName)
         Cypress.env('firstName', fName);
 
 
-        cy.get(el.INPUT_LASTNAME).type(user.lastName)
+        cy.get(el.INPUT_LASTNAME).clear().type(user.lastName)
         Cypress.env('lastName', user.lastName);
 
 
-        cy.get(el.INPUT_BIRTHDATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').type(`${month}/${day}/${year}`);
+        cy.get(el.INPUT_BIRTHDATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').clear().type(`${month}/${day}/${year}`);
 
         cy.get(el.SELECT_COUNTRY)
             .find('option') // pega todas as opções do select
@@ -60,7 +61,7 @@ class InsuranceData {
                 cy.get(el.SELECT_COUNTRY).select(Cypress._.sample(values))
             });
 
-        cy.get(el.INPUT_ZIPCODE).type(user.zipCode);
+        cy.get(el.INPUT_ZIPCODE).clear().type(user.zipCode);
 
 
         cy.get(el.SELECT_OCCUPATION)
@@ -74,20 +75,20 @@ class InsuranceData {
 
         if (fields != 'obrigatórios') {
             cy.get(el.RADIO_GENDER).check({ force: true });
-            cy.get(el.INPUT_STREET_ADRESS).type(user.streetAddress);
-            cy.get(el.INPUT_CITY).type(faker.location.city());
-            cy.get(el.INPUT_WEB_SITE).type(user.webSite);
+            cy.get(el.INPUT_STREET_ADRESS).clear().type(user.streetAddress);
+            cy.get(el.INPUT_CITY).clear().type(faker.location.city());
+            cy.get(el.INPUT_WEB_SITE).clear().type(user.webSite);
             cy.get(el.INPUT_UPLOAD_IMG).selectFile('Cypress/assets/channels4_profile.jpg', { force: true });
         }
 
 
         if (fields != 'inválidos') {
             //validação de campos obrigatórios
-            cy.get(el.SPAN_COUNTER_FILDS).find('span')
+            cy.get(el.SPAN_COUNTER_FIELDS).find('span')
                 .then(($span) => {
                     expect($span.text()).to.equal('0');
                 });
-            cy.get(el.FILD_INVALID).should('not.exist')//Não existe campo inválido
+            cy.get(el.FIELD_INVALID).should('not.exist')//Não existe campo inválido
 
             cy.log('Todos os campos preenchidos com sucesso!');
 
@@ -108,13 +109,23 @@ class InsuranceData {
         cy.get(el.SPAN_ERROR).should('be.visible')
 
         //validação de campos obrigatórios
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
+        cy.get(el.SPAN_COUNTER_FIELDS).find('span').then(($span) => {
             expect($span.text()).not.to.equal('0');
         });
 
-        cy.get(el.FILD_INVALID).should('exist')//Existe campo inválido
+        cy.get(el.FIELD_INVALID).should('exist')//Existe campo inválido
         cy.log('Campos inválidos foram detectados!');
     }
+
+
+    insuranceDataBVA() {
+
+        VehiceData.verifyFieldRangeDate(el.INPUT_BIRTHDATE, moment().subtract(18, 'years').format('MM/DD/YYYY'), moment().subtract(70, 'years').format('MM/DD/YYYY'),"past");
+        VehiceData.verifyFieldRange(el.INPUT_ZIPCODE,1000,99999999)
+
+    }
+
+
 
 }
 

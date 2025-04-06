@@ -16,5 +16,6 @@ export const elements = {
     LOADER_PRICE: '#xLoaderPrice',
     SELECTED_STEP: '.idealsteps-step-active',
     FILD_INVALID: '.invalid',
+    MODAL_LOADING: '#LoadingPDF'
 }
 

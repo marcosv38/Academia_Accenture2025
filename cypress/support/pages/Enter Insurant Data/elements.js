@@ -16,8 +16,8 @@ export const elements = {
     INPUT_UPLOAD_IMG: '#picturecontainer',
     INPUT_NEXT: '#nextenterproductdata',
     INPUT_PREVIOUS: '#preventervehicledata',
-    SPAN_COUNTER_FILDS: '#enterinsurantdata',
+    SPAN_COUNTER_FIELDS: '#enterinsurantdata',
     SELECTED_STEP: '.idealsteps-step-active',
-    FILD_INVALID: '.invalid',
+    FIELD_INVALID: '.invalid',
     SPAN_ERROR: '.error',
 }

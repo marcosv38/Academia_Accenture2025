@@ -99,6 +99,8 @@ class PriceOption {
 
     viewPDF() {
         cy.get(el.VIEW_QUOTE).click()
+        cy.get(el.MODAL_LOADING, {timeout: 20000}).should('not.exist');
+        cy.log('PDF aberto com sucesso!');
     }
 
 }

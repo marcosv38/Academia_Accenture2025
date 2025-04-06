@@ -1,7 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-
+import VehiceData from '../Enter Vehicle Data'
 
 const randomMonths = faker.number.int({ min: 2, max: 12 });
 const fakeDateStart = moment().add(randomMonths, 'months').format('MM/DD/YYYY');
@@ -20,7 +20,7 @@ class ProductData {
     });
     cy.log('Aba Enter Product Data validada com sucesso!! Preenchendo os dados solicitados...');
 
-    cy.get(el.INPUT_START_DATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').type(fakeDateStart);
+    cy.get(el.INPUT_START_DATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').clear().type(fakeDateStart);
     cy.get(el.SELECT_INSURANCE)
       .find('option') // pega todas as opções do select
       .then(options => {
@@ -82,6 +82,12 @@ class ProductData {
     cy.get(el.INPUT_NEXT).click();
   }
 
+
+  ProductDataBVA() {
+    cy.wait(1000);
+    VehiceData.verifyFieldRangeDate(el.INPUT_START_DATE, moment().add(1, 'months').format('MM/DD/YYYY'), "-","future");
+    cy.log('Validação concluída: Todos os campos dentro do escopo do teste de BVA foram verificados e aprovados com sucesso!');
+  }
   
 }
 
