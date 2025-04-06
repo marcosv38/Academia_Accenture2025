@@ -12,7 +12,7 @@ let fName = 'dsda';
 const removeAccents = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z]/g, '');
 
 const user = {
-    lastName: removeAccents(faker.person.lastName().replace('-', '')),
+    lastName: removeAccents(faker.person.lastName().replace(/[-']/g, '')),
     streetAddress: faker.location.street(),
     city: faker.location.city(),
     state: faker.location.state(),
@@ -38,9 +38,9 @@ class InsuranceData {
 
         
         if (el.RADIO_GENDER === '#genderfemale') {
-            fName = removeAccents(faker.person.firstName({ sex: 'female' }).replace('-', ''))
+            fName = removeAccents(faker.person.firstName({ sex: 'female' }).replace(/[-']/g, ''))
         } else {
-            fName = removeAccents(faker.person.firstName({ sex: 'male' }).replace('-', ''))
+            fName = removeAccents(faker.person.firstName({ sex: 'male' }).replace(/[-']/g, ''))
         }
 
         cy.get(el.INPUT_FIRSTNAME).type(fName)

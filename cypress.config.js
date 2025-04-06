@@ -1,9 +1,10 @@
 const { defineConfig } = require("cypress");
-const { readPdf } = require('./cypress/support/helper')
+const { readPdf } = require('./cypress/support/helper');
+const fs = require('fs');
+const path = require('path');
+
 module.exports = defineConfig({
-  env: {
-    
-  },
+  env: {},
   e2e: {
     viewportWidth: 1280,
     viewportHeight: 720,
@@ -13,8 +14,15 @@ module.exports = defineConfig({
 
     setupNodeEvents(on, config) {
       on('task', {
-        readPdf
-      })
+        readPdf,
+
+        // 👇 Nova task para verificar se o arquivo foi baixado
+        isFileDownloaded(filename) {
+          const filePath = path.join(__dirname, 'cypress', 'downloads', filename);
+          return fs.existsSync(filePath);
+        },
+      });
+
       const cucumber = require('cypress-cucumber-preprocessor').default;
       on('file:preprocessor', cucumber());
     },

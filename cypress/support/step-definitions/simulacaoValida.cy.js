@@ -5,7 +5,7 @@ import InsuranceData from '../pages/Enter Insurant Data'
 import ProductData from '../pages/Enter Product Data'
 import PriceOption from '../pages/Select Price Option'
 import SendQuote from '../pages/Send Quote'
-import QuoteAnalysis from '../pages/Analise PDF'
+
 
 
 Given('que estou na página inicial do site',()=>{
@@ -34,14 +34,11 @@ And('preencho os dados {string} do produto {string}', (fields,vehice)=>{
 
 Then('seleciono o preço do produto',()=>{
     PriceOption.choosePrice()
+    
 })
 
-And('gero o PDF da proposta',()=>{
-    QuoteAnalysis.downloadQuote()
-})
-
-And('valido o pdf da proposta',()=>{
-    QuoteAnalysis.analysisPDF()
+And('clico em next para prosseguir',()=>{
+    PriceOption.nextPagePrice()
 })
 
 And('envio a proposta para o e-mail do cliente',()=>{

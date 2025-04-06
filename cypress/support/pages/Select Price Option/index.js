@@ -10,11 +10,11 @@ class PriceOption {
 
 
         cy.get(el.SELECTED_STEP)
-        .find('a')
-        .should('be.visible')
-        .and('contain', 'Select Price Option');
+            .find('a')
+            .should('be.visible')
+            .and('contain', 'Select Price Option');
 
-        
+
         cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
             expect($span.text()).to.not.equal('0');
         });
@@ -69,28 +69,36 @@ class PriceOption {
 
     }
 
-    nextPagePrice(){
-        cy.get('#sendquote').click();
+    clickPagePrice() {
+        cy.get(el.INPUT_QUOTE).click();
     }
 
-    priceOptionsError(){
+    nextPagePrice(){
+        cy.get(el.nextsendquote).click();
+    }
+
+    priceOptionsError() {
 
         cy.get(el.LOADER_PRICE).should('be.visible');//Verificar se o loader está visível
         cy.get(el.LOADER_PRICE)
-        .find('p')
-        .should('be.visible')
-        .and('contain', 'Please, complete the first three steps to see the price table.');
+            .find('p')
+            .should('be.visible')
+            .and('contain', 'Please, complete the first three steps to see the price table.');
 
         cy.get(el.SELECTED_STEP)
-        .find('a')
-        .should('be.visible')
-        .and('contain', 'Select Price Option');
+            .find('a')
+            .should('be.visible')
+            .and('contain', 'Select Price Option');
 
         cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
             expect($span.text()).to.not.equal('0');
         });
 
         cy.log('Aba Select Price Option validada com sucesso!!');
+    }
+
+    viewPDF() {
+        cy.get(el.VIEW_QUOTE).click()
     }
 
 }

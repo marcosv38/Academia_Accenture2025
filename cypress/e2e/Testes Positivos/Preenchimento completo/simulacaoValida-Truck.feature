@@ -9,7 +9,6 @@ Funcionalidade: Gerar oferta de seguro para caminhão
     E informo os dados 'completos' do segurado
     E preencho os dados 'completos' do produto 'truck'
     E seleciono o preço do produto
-    E gero o PDF da proposta
-    E valido o pdf da proposta
+    E clico em next para prosseguir
     E envio a proposta para o e-mail do cliente
     Então valido o envio da proposta

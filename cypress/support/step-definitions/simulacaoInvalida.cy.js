@@ -35,7 +35,7 @@ And('preencho os dados {string} do produto {string}', (fields,vehice)=>{
 
 Then('price options não deve apresentar as opções de preço',()=>{
     PriceOption.priceOptionsError();
-    PriceOption.nextPagePrice();
+    PriceOption.clickPagePrice();
 })
 
 And('a aba de envio não deve apresentar os campos de envio',()=>{

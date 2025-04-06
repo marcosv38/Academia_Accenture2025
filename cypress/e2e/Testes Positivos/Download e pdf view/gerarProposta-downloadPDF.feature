@@ -9,6 +9,5 @@ Funcionalidade: Gerar oferta de seguro para automóvel
     E informo os dados 'obrigatórios' do segurado
     E preencho os dados 'obrigatórios' do produto 'automobile'
     E seleciono o preço do produto
-    E clico em next para prosseguir
-    E envio a proposta para o e-mail do cliente
-    Então valido o envio da proposta
+    E gero o PDF da proposta
+    Então valido o pdf da proposta

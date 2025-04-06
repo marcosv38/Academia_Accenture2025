@@ -11,13 +11,13 @@ class QuoteAnalysis{
         cy.get(el.INPUT_PREVIOUS).click({ force: true });
         cy.get(el.INPUT_NEXT, { timeout: 5000 }).should('exist');
         cy.get(el.INPUT_NEXT).click();
+        cy.wait(3000);
+        cy.task('isFileDownloaded', 'Tricentis_Insurance_Quote.pdf').should('be.true');
+        cy.log('Download realizado com sucesso!');
     }
 
     // Função que analisa o conteúdo do PDF baixado
     analysisPDF(){
-        
-        cy.wait(3000);
-
         // Usa uma task customizada chamada 'readPdf' para ler o conteúdo do PDF salvo
         cy.task('readPdf', 'cypress/downloads/Tricentis_Insurance_Quote.pdf')
         
