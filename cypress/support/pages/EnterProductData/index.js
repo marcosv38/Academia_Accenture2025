@@ -1,7 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import VehiceData from '../Enter Vehicle Data'
+import VehiceData from '../EnterVehicleData'
 
 const randomMonths = faker.number.int({ min: 2, max: 12 });
 const fakeDateStart = moment().add(randomMonths, 'months').format('MM/DD/YYYY');

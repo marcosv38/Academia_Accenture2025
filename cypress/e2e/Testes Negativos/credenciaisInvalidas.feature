@@ -15,4 +15,4 @@ Funcionalidade: Validação de campos no envio da proposta de seguro
     E clico em next para prosseguir
     E insiro dados 'inválidos' do usuário
     Então tento enviar a proposta para o e-mail do cliente
-    E o sistema deve apresentar uma mensagem de erro
+    E o sistema deve impedir o envio e apresentar uma mensagem de alerta

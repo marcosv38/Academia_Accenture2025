@@ -1,19 +1,16 @@
-import {Given, When, And, Then, Before, After, But} from 'cypress-cucumber-preprocessor/steps'
-import VehiceData from '../pages/Enter Vehicle Data'
-import InsuranceData from '../pages/Enter Insurant Data'
-import ProductData from '../pages/Enter Product Data'
+import { When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import VehiceData from '../pages/EnterVehicleData'
+import InsuranceData from '../pages/EnterInsurantData'
+import ProductData from '../pages/EnterProductData'
 
-
-
-When('testo os campos {string} do veículo {string}', (fields,Vehicle)=>{
-    VehiceData.vehicleDataValidate(Vehicle,fields)
+When('testo os campos {string} do veículo {string}', (fields, Vehicle) => {
+    VehiceData.vehicleDataValidate(Vehicle, fields)
 })
 
-And('testo os campos de informação do segurado', (fields)=>{
-     InsuranceData.insuranceDataValidate()
+And('testo os campos de informação do segurado', (fields) => {
+    InsuranceData.insuranceDataValidate()
 })
 
-
-Then('testo os campos de seguro', ()=>{
+Then('testo os campos de seguro', () => {
     ProductData.ProductDataValidate()
 })

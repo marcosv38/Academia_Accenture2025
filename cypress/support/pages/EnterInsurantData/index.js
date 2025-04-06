@@ -1,6 +1,6 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
-import VehiceData from '../Enter Vehicle Data'
+import VehiceData from '../EnterVehicleData'
 import moment from 'moment';
 
 const fakeDateBirth = faker.date.past(51);

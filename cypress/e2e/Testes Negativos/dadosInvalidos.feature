@@ -12,5 +12,5 @@ Funcionalidade: Bloqueio de campos no envio da proposta de seguro com dados inv�
     E preencho os dados 'inválidos' do produto 'automobile'
     E clico em next para ir à aba de seleção de preço
     Então price options não deve apresentar as opções de preço
-    E clico na aba Send Quote para prosseguir
+    E clico na aba Send Quote para prosseguir sem escolher o plano
     E a aba de envio não deve exibir os campos de preenchimento
