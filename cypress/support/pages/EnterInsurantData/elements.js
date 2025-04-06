@@ -17,7 +17,4 @@ export const elements = {
     INPUT_NEXT: '#nextenterproductdata',
     INPUT_PREVIOUS: '#preventervehicledata',
     SPAN_COUNTER_FIELDS: '#enterinsurantdata',
-    SELECTED_STEP: '.idealsteps-step-active',
-    FIELD_INVALID: '.invalid',
-    SPAN_ERROR: '.error',
 }

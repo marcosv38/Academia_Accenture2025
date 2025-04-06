@@ -12,10 +12,8 @@ export const elements = {
     VIEW_QUOTE: '#viewquote',
     INPUT_NEXT: '#nextsendquote',
     INPUT_PREVIOUS: '#preventerproductdata',
-    SPAN_COUNTER_FILDS: '#selectpriceoption',
+    SPAN_COUNTER_FIELDS: '#selectpriceoption',
     LOADER_PRICE: '#xLoaderPrice',
-    SELECTED_STEP: '.idealsteps-step-active',
-    FILD_INVALID: '.invalid',
     MODAL_LOADING: '#LoadingPDF'
 }
 

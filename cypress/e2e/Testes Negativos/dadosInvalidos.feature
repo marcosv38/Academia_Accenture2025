@@ -7,7 +7,7 @@ Funcionalidade: Bloqueio de campos no envio da proposta de seguro com dados inv�
     E escolho o tipo de veículo 'automobile'
     Quando preencho os campos com dados 'obrigatórios' do 'automobile'
     E clico em next para ir à aba de dados do segurado
-    E informo os dados inválidos do segurado
+    E informo os dados 'inválidos' do segurado
     E clico em next para ir à aba de dados do produto
     E preencho os dados 'inválidos' do produto 'automobile'
     E clico em next para ir à aba de seleção de preço

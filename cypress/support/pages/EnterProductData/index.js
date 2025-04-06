@@ -1,24 +1,16 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import VehiceData from '../EnterVehicleData'
+import GlobalsValidations from '../pages/ValidacoesGlobais';
 
 const randomMonths = faker.number.int({ min: 2, max: 12 });
 const fakeDateStart = moment().add(randomMonths, 'months').format('MM/DD/YYYY');
 
 class ProductData {
 
-  fillDataProduct(fields,vehice) {
+  fillDataProduct(fields, vehice) {
 
-    cy.get(el.SELECTED_STEP)
-      .find('a')
-      .should('be.visible')
-      .and('contain', 'Enter Product Data');
-
-    cy.get(el.SPAN_COUNTER_FIELDS).find('span').then(($span) => {
-      expect($span.text()).to.not.equal('0');
-    });
-    cy.log('Aba Enter Product Data validada com sucesso!! Preenchendo os dados solicitados...');
+    GlobalsValidations.pageValidation(el.SPAN_COUNTER_FIELDS, 'Enter Product Data');
 
     cy.get(el.INPUT_START_DATE).should('have.attr', 'placeholder', 'MM/DD/YYYY').clear().type(fakeDateStart);
     cy.get(el.SELECT_INSURANCE)
@@ -57,36 +49,16 @@ class ProductData {
 
     }
 
-    if(fields != 'inválidos'){
-      //validação de campos obrigatórios
-      cy.get(el.SPAN_COUNTER_FIELDS).find('span').then(($span) => {
-          expect($span.text()).to.equal('0');
-      });
-  
-      cy.get(el.FIELD_INVALID).should('not.exist')//Não existe campo inválido
-      cy.log('Todos os campos preenchidos com sucesso!');
-  }else{
-      cy.get(el.SELECT_INSURANCE).select('default')
-      //validação de campos obrigatórios
-      cy.get(el.SPAN_COUNTER_FIELDS).find('span').then(($span) => {
-          expect($span.text()).not.to.equal('0');
-      });
-  
-      cy.get(el.FIELD_INVALID).should('exist')//Existe campo inválido
-      cy.log('Campos inválidos foram detectados!');
-  }
+    GlobalsValidations.fillFormsValidation(fields, el.SPAN_COUNTER_FIELDS)
 
   }
-
-  
-
 
   ProductDataValidate() {
-    cy.wait(500);
-    VehiceData.verifyFieldRangeDate(el.INPUT_START_DATE, moment().add(1, 'months').format('MM/DD/YYYY'), "-","future");
+    cy.get(el.INPUT_START_DATE, { timeout: 5000 }).should('be.visible')
+    GlobalsValidations.verifyFieldRangeDate(el.INPUT_START_DATE, moment().add(1, 'months').format('MM/DD/YYYY'), "-", "future");
     cy.log('Validação concluída: Todos os campos dentro do escopo do teste de BVA foram verificados e aprovados com sucesso!');
   }
-  
+
   nextPageProduct() {
     cy.get(el.INPUT_NEXT).click();
   }

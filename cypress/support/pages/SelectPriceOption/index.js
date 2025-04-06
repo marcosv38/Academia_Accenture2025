@@ -1,5 +1,7 @@
 import { elements as el } from "./elements";
 import { faker } from '@faker-js/faker';
+import GlobalsValidations from '../pages/ValidacoesGlobais';
+
 const typePlan = faker.number.int({ min: 0, max: 3 })
 
 class PriceOption {
@@ -8,18 +10,7 @@ class PriceOption {
 
         cy.get(el.LOADER_PRICE).should('not.be.visible');//Verificar se o loader está invisível
 
-
-        cy.get(el.SELECTED_STEP)
-            .find('a')
-            .should('be.visible')
-            .and('contain', 'Select Price Option');
-
-
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
-            expect($span.text()).to.not.equal('0');
-        });
-
-        cy.log('Aba Select Price Option validada com sucesso!! Preenchendo os dados solicitados...');
+        GlobalsValidations.pageValidation(el.SPAN_COUNTER_FIELDS, 'Select Price Option');
 
         switch (typePlan) {
             case 0:
@@ -61,45 +52,35 @@ class PriceOption {
                 break;
         }
 
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
-            expect($span.text()).to.equal('0');
-        });
-        cy.log('Plano selecionado com sucesso!');
-        
+        GlobalsValidations.fillFormsValidation("", el.SPAN_COUNTER_FIELDS)
 
+        cy.log('Plano selecionado com sucesso!');
+
+
+    }
+
+    priceOptionsError() {
+        
+        GlobalsValidations.pageValidation(el.SPAN_COUNTER_FIELDS, 'Select Price Option');
+        cy.get(el.LOADER_PRICE)
+            .find('p')
+            .should('be.visible')
+            .and('contain', 'Please, complete the first three steps to see the price table.');
+        cy.log('Mensagem exibida com sucesso!');
+        
     }
 
     clickPagePrice() {
         cy.get(el.INPUT_QUOTE).click();
     }
 
-    nextPagePrice(){
-        cy.get(el.INPUT_NEXT,{ timeout: 10000 }).click();
-    }
-
-    priceOptionsError() {
-
-        cy.get(el.LOADER_PRICE).should('be.visible');//Verificar se o loader está visível
-        cy.get(el.LOADER_PRICE)
-            .find('p')
-            .should('be.visible')
-            .and('contain', 'Please, complete the first three steps to see the price table.');
-
-        cy.get(el.SELECTED_STEP)
-            .find('a')
-            .should('be.visible')
-            .and('contain', 'Select Price Option');
-
-        cy.get(el.SPAN_COUNTER_FILDS).find('span').then(($span) => {
-            expect($span.text()).to.not.equal('0');
-        });
-
-        cy.log('Aba Select Price Option validada com sucesso!!');
+    nextPagePrice() {
+        cy.get(el.INPUT_NEXT, { timeout: 10000 }).click();
     }
 
     viewPDF() {
         cy.get(el.VIEW_QUOTE).click()
-        cy.get(el.MODAL_LOADING, {timeout: 20000}).should('not.exist');
+        cy.get(el.MODAL_LOADING, { timeout: 20000 }).should('not.exist');
         cy.log('PDF aberto com sucesso!');
     }
 

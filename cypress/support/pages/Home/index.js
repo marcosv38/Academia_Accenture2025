@@ -1,15 +1,15 @@
-import { elements as el} from "./elements";
+import { elements as el } from "./elements";
 
-class Home{
-    
-    visitPage(){
+class Home {
+
+    visitPage() {
         cy.visit('/')
     }
 
-    selectVehicle(veiculo){
-        cy.get(el.BTN_VEHICLE_TYPE+veiculo).should('be.visible');
+    selectVehicle(veiculo) {
+        cy.get(el.BTN_VEHICLE_TYPE + veiculo).should('be.visible');
         cy.log('Botão de ' + veiculo + ' visível');
-        cy.get(el.BTN_VEHICLE_TYPE+veiculo).click();
+        cy.get(el.BTN_VEHICLE_TYPE + veiculo).click();
     }
 }
 

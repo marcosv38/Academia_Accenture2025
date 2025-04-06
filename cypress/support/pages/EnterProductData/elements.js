@@ -1,4 +1,4 @@
-const optionalProducts = ["#EuroProtection","#LegalDefenseInsurance"]
+const optionalProducts = ["#EuroProtection", "#LegalDefenseInsurance"]
 
 export const elements = {
     INPUT_START_DATE: '#startdate',
@@ -10,6 +10,5 @@ export const elements = {
     INPUT_NEXT: '#nextselectpriceoption',
     INPUT_PREVIOUS: '#preventerinsurancedata',
     SPAN_COUNTER_FIELDS: '#enterproductdata',
-    SELECTED_STEP: '.idealsteps-step-active',
-    FIELD_INVALID: '.invalid',
+    
 }

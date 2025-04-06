@@ -5,9 +5,9 @@ import SendQuote from '../pages/SendQuote'
 
 
 
-And('informo os dados inválidos do segurado', () => {
-    InsuranceData.fillInvalidDataInsurance()
-})
+//And('informo os dados {string} do segurado', (fields) => {
+  // InsuranceData.fillInvalidDataInsurance()
+//})
 
 Then('price options não deve apresentar as opções de preço', () => {
     PriceOption.priceOptionsError();

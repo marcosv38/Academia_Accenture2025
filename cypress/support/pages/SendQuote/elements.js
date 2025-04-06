@@ -1,4 +1,5 @@
 export const elements = {
+    
     INPUT_EMAIL: '#email',
     INPUT_PHONE: '#phone',
     INPUT_USERNAME: '#username',
@@ -9,14 +10,11 @@ export const elements = {
     INPUT_PREVIOUS: '#prevselectpriceoption',
     MODAL_SEND_QUOTE: '.sweet-alert',
     BTN_CONFIRM_QUOTE: '.confirm',
-    SPAN_COUNTER_FILDS: '#sendquote',
+    SPAN_COUNTER_FIELDS: '#sendquote',
     LOADER_QUOTE: '#xLoaderQuote',
-    SELECTED_STEP: '.idealsteps-step-active',
-    FILD_INVALID: '.invalid',
     INPUT_NEXT: '#nextsendquote',
-    LABEL_ERROR: '.error',
     MODAL_ERROR: '.sweet-alert',
     MODAL_ALERT_ERROR: 'h2',
     MODAL_BTN_CONFIRM: '.confirm'
-    
+
 }
