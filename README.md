@@ -73,10 +73,6 @@ Fluxos completos de cotação para cada tipo de veículo, preenchendo todos os d
 
 ---
 
-Todos os testes foram desenvolvidos seguindo o padrão **Page Objects**, com os dados sensíveis armazenados no `cypress.env.json`. A escrita das features segue o formato **Gherkin**, promovendo clareza e legibilidade para todos os stakeholders.
-
----
-
 ## 📌 Requisitos atendidos
 
 - ✅ Uso do padrão **Page Objects**;
@@ -98,14 +94,14 @@ Todos os testes foram desenvolvidos seguindo o padrão **Page Objects**, com os 
 ## 📁 Organização do projeto
 
 - `cypress/e2e` - Arquivos de testes (features)
-- `cypress/support/pageObjects` - Page Objects
+- `cypress/support/page` - Page Objects
+- `cypress/support/step-definitions` - Definição dos passos do Gherkin
 - `cypress.env.json` - Variáveis sensíveis
 
 ---
 
 ## 🙏 Agradecimentos
 
-Agradeço à equipe da Academia Accenture pela oportunidade e pela experiência enriquecedora durante o desafio!
-
+Agradeço, primeiramente, ao capitão Joni pela paciência e didática ao compartilhar seu conhecimento, junto ao grande Allan — uma dupla incrível! Estendo também minha gratidão a toda a equipe da Academia Accenture pela oportunidade e pela experiência enriquecedora proporcionada durante o desafio.
 ---
 
